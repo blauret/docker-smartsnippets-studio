@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get -y install make git python3 unzip wget libz1 libncurses5 libbz2-1.0 tk tk-dev tcl tcl-dev gawk \
+RUN apt-get update && apt-get -y install make git python3 python3-pip unzip wget libz1 libncurses5 libbz2-1.0 tk tk-dev tcl tcl-dev gawk \
 # SmartSnippets
 && wget -q https://www.dialog-semiconductor.com/sites/default/files/2021-03/SmartSnippets_Studio-linux.gtk_.x86_64-2.0.16.1760.zip \
 && unzip -q SmartSnippets_Studio-linux.gtk_.x86_64-2.0.16.1760.zip \
@@ -18,6 +18,8 @@ plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.1100.v20190907-0426\n\
 /opt/DiaSemi/SmartSnippetsStudio2.0.16/CDT/plugin_customization.ini\n\
 -vm\n\
 /opt/DiaSemi/SmartSnippetsStudio2.0.16/jre/bin\n' > /opt/DiaSemi/SmartSnippetsStudio2.0.16/CDT/SmartSnippets_Studio.ini \
+# awsCLI
+&& pip3 install awsCLI \
 # GCC
 && wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/7-2018q2/gcc-arm-none-eabi-7-2018-q2-update-linux.tar.bz2 \
 && tar -xf gcc-arm-none-eabi-7-2018-q2-update-linux.tar.bz2 -C /opt/DiaSemi/SmartSnippetsStudio2.0.16/GCC/ \
